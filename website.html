@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+
+    <title>Echo Server using Websockets</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      body {
+        text-align: center;
+        min-width: 500px;
+      }
+    </style>
+    <script type="text/javascript" src="{{ static_url('jquery.min.js') }}"></script>
+    <script>
+
+    	 // log function
+      log = function(data){
+        $("div#terminal").prepend("</br>" +data);
+        console.log(data);
+      };
+
+      $(document).ready(function () {
+        
+ 
+          var ws;
+          var host = "localhost"
+          var port = "8888";
+          var uri = "/ws";
+ 
+          // create websocket instance
+          ws = new WebSocket("ws://" + host + ":" + port + uri);
+           
+          // Handle incoming websocket message callback
+          ws.onmessage = function(evt) {
+            log("Message Received: " + evt.data)
+            alert("message received: " + evt.data);
+            };
+ 
+          // Close Websocket callback
+          ws.onclose = function(evt) {
+            log("***Connection Closed***");
+            alert("Connection close");
+           
+ 
+            };
+ 
+          // Open Websocket callback
+          ws.onopen = function(evt) { 
+            
+            $("div#message_details").show();
+            log("***Connection Opened***");
+          };
+
+          // Send websocket message function
+        $("#send").click(function(evt) {
+            log("Sending Message: "+$("#message").val());
+            ws.send($("#message").val());
+        });
+ 
+      });
+    </script>
+  </head>
+  <body>
+    <h1>WebSockets</h1>
+    
+    <div id="message_details">
+        </br></br>
+        <label for="message">message:</label>
+        <input type="text" id="message" value="Hello World!"/><br />
+        <input type="submit" id="send" value="send" />
+    </div>
+    <div id="terminal">
+        
+    </div>
+  </body>
+</html>
