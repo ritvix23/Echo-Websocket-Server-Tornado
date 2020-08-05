@@ -32,7 +32,7 @@ Your server is up and running on localhost:8888.
 ```
 localhost:8888/
 ```
-* Messages can ne sent/recieved through this web page to/from the server.
+* Messages can be sent/recieved through this web page to/from the server.
 
 
 
@@ -40,5 +40,5 @@ localhost:8888/
 * Major help from amazing article on basics of tornado framework and asynchronous programming at -
 https://opensource.com/article/18/6/tornado-framework
 
-* Took inspiration from Ramesh Sampath's implementation of Tic-Tac-Toe game using websockets-
+* Inspiration from Ramesh Sampath's implementation of Tic-Tac-Toe game using websockets-
 https://github.com/sampathweb/board-games-app
